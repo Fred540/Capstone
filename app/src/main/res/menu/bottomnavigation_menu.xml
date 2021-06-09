@@ -11,14 +11,14 @@
         android:title="@string/article"
         android:icon="@drawable/ic_article"/>
 
-    <item
+<!--    <item
         android:id="@+id/history_menu"
         android:title="@string/history"
-        android:icon="@drawable/ic_history"/>
+        android:icon="@drawable/ic_history"/>-->
 
     <item
         android:id="@+id/settings_menu"
-        android:title="@string/settings"
+        android:title="@string/aboutus"
         android:icon="@drawable/ic_settings"/>
 
 </menu>

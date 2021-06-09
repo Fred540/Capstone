@@ -1,4 +1,4 @@
-package com.example.allmen
+package com.example.allmen.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,12 +27,12 @@ class ArticleFragment : Fragment() {
 
     private fun configWebView() {
 
-        binding.webView.loadUrl("https://www.alodokter.com/")
+        binding.webView.loadUrl("https://www.diabetes.org/")
 
-        val webSettings = binding.webView.getSettings()
-        webSettings.setJavaScriptEnabled(true)
+        val webSettings = binding.webView.settings
+        webSettings.javaScriptEnabled = true
 
-        binding.webView.setWebViewClient(WebViewClient())
+        binding.webView.webViewClient = WebViewClient()
     }
 
 }

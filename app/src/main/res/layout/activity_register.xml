@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimary"
     android:fitsSystemWindows="true"
-    tools:context=".RegisterActivity">
+    tools:context=".login.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,8 @@
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:src="@drawable/usericon" />
+            android:src="@drawable/usericon"
+            android:contentDescription="@string/preview" />
 
         <com.google.android.material.textfield.TextInputLayout
             app:errorEnabled="true"
@@ -74,7 +75,7 @@
         <Button
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
@@ -91,5 +92,12 @@
             android:gravity="center"
             android:text="@string/back_to_login"
             android:textColor="@android:color/white" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
     </LinearLayout>
 </ScrollView>

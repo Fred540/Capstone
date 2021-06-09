@@ -10,15 +10,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".HomeFragment">
+        tools:context=".fragment.HomeFragment">
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_marginTop="12dp"
+                android:src="@drawable/home_apple"
                 android:contentDescription="@string/preview"
-                tools:srcCompat="@drawable/banana"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -81,6 +81,7 @@
             android:layout_marginTop="15dp"
             android:text="@string/why"
             android:textColor="#100F0F"
+            android:visibility="gone"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView2" />

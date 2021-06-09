@@ -1,4 +1,4 @@
-package com.example.allmen
+package com.example.allmen.fragment
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.allmen.R
 import com.example.allmen.databinding.FragmentHomeBinding
 import com.example.allmen.ml.ModelMLofFruit
 import org.tensorflow.lite.DataType
@@ -22,7 +23,7 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    val REQUEST_IMAGE_CAPTURE = 100
+    private val REQUEST_IMAGE_CAPTURE = 100
     private lateinit var bitmap: Bitmap
 
     override fun onCreateView(
@@ -37,7 +38,7 @@ class HomeFragment : Fragment() {
             activity?.application?.assets?.open(fileName)?.bufferedReader().use { it?.readText() }
         val townList = inputString?.split("\n")
 
-        binding.button.setOnClickListener(View.OnClickListener {
+        binding.button.setOnClickListener {
 
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
@@ -49,17 +50,20 @@ class HomeFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        })
+        }
 
-        binding.button2.setOnClickListener(View.OnClickListener {
+        binding.button2.setOnClickListener {
+            binding.why.visibility = View.VISIBLE
+
             val resized: Bitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true)
             val model = activity?.let { it1 -> ModelMLofFruit.newInstance(it1) }
 
-            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 100, 100, 3), DataType.FLOAT32)
+            val inputFeature0 =
+                TensorBuffer.createFixedSize(intArrayOf(1, 100, 100, 3), DataType.FLOAT32)
 
             val tensorImage = TensorImage(DataType.FLOAT32)
             tensorImage.load(resized)
-            val byteBuffer: ByteBuffer = tensorImage.getBuffer()
+            val byteBuffer: ByteBuffer = tensorImage.buffer
 
             inputFeature0.loadBuffer(byteBuffer)
 
@@ -69,44 +73,44 @@ class HomeFragment : Fragment() {
             val max = outputFeature0?.floatArray?.let { it1 -> getMax(it1) }
 
             val resultname = townList?.get(max!!).toString()
-            binding.textView.setText(resultname)
+            binding.textView.text = resultname
 
             configFruitsProperties(resultname)
 
             model?.close()
-        })
+        }
 
         return view
 
     }
 
     private fun configFruitsProperties(resultname: String) {
-        when {
-            resultname == "Apple" -> {
+        when (resultname) {
+            "Apple" -> {
                 binding.textView2.setText(R.string.safetoeat)
                 binding.textView3.setText(R.string.apple)
             }
-            resultname == "Banana" -> {
+            "Banana" -> {
                 binding.textView2.setText(R.string.notsafetoeat)
                 binding.textView3.setText(R.string.banana)
             }
-            resultname == "Corn" -> {
+            "Corn" -> {
                 binding.textView2.setText(R.string.safetoeat)
                 binding.textView3.setText(R.string.corn)
             }
-            resultname == "Orange" -> {
+            "Orange" -> {
                 binding.textView2.setText(R.string.safetoeat)
                 binding.textView3.setText(R.string.orange)
             }
-            resultname == "Peach" -> {
+            "Peach" -> {
                 binding.textView2.setText(R.string.safetoeat)
                 binding.textView3.setText(R.string.peach)
             }
-            resultname == "Strawberry" -> {
+            "Strawberry" -> {
                 binding.textView2.setText(R.string.safetoeat)
                 binding.textView3.setText(R.string.strawberry)
             }
-            resultname == "Watermelon" -> {
+            "Watermelon" -> {
                 binding.textView2.setText(R.string.notsafetoeat)
                 binding.textView3.setText(R.string.watermelon)
             }
@@ -122,7 +126,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun getMax(arr: FloatArray): Int {
+    private fun getMax(arr: FloatArray): Int {
         var ind = 0
         var min = 0.0f
 

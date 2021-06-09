@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">All Men</string>
+    <string name="app_name">FyDia</string>
 
     <string name="create_account"><font color="#00ff00">text</font></string>
     <string name="email">Email</string>
@@ -16,7 +16,7 @@
     <string name="home">Home</string>
     <string name="article">Article</string>
     <string name="history">History</string>
-    <string name="settings">Settings</string>
+    <string name="aboutus">About Us</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="maintenance">For the time being, this feature is still under development</string>
@@ -60,6 +60,9 @@
     <string name="watermelon">watermelon has good nutrition but has a glycemic index that can increase blood sugar levels</string>
 
     <string name="enable_night_mode">Enable Night Mode</string>
-
+    <string name="create_account_login">I don\'t have account yet. create one</string>
+    <string name="turn_on_dark_mode">Turn On Night Mode</string>
+    <string name="about">ada teks panjang disini</string>
+    <string name="fydia">FyDia is an application to detect fruits or vegetables that are safe for diabetics. FyDia will tell users whether the fruit or vegetable consumed is safe or not, besides that FyDia will also give a little explanation</string>
 
 </resources>

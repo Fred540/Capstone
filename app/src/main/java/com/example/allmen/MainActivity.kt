@@ -5,6 +5,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.allmen.databinding.ActivityMainBinding
+import com.example.allmen.fragment.AboutUsFragment
+import com.example.allmen.fragment.ArticleFragment
+import com.example.allmen.fragment.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -34,8 +37,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         when (item.itemId) {
             R.id.home_menu -> fragment = HomeFragment()
             R.id.article_menu -> fragment = ArticleFragment()
-            R.id.history_menu -> fragment = HistoryFragment()
-            R.id.settings_menu -> fragment = SettingsFragment()
+            //R.id.history_menu -> fragment = HistoryFragment()
+            R.id.settings_menu -> fragment = AboutUsFragment()
         }
         return loadFragment(fragment!!)    }
 
